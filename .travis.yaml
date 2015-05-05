@@ -1,0 +1,13 @@
+language: ruby
+rvm:
+  - 2.0.0
+
+deploy:
+  provider: heroku
+  api_key: "23f6b919-55eb-4242-9df8-85a896ada92b"
+  run: "run rake db:migrate"
+
+# whitelist
+branches:
+  only:
+    - test
