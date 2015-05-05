@@ -1,0 +1,16 @@
+.container
+  %h1 welcome to  your MEMORY EXTENDER!
+
+  %h3 Your tasks
+
+  %form{action:"/tasks", method:"post"}
+    %input{type:'text', name:'description', placeholder:'enter task, e.g. Learn that thing'}
+    %input{type:'radio', name:'priority', value:'a'} A
+    %input{type:'radio', name:'priority', value:'b'} B
+    %input{type:'radio', name:'priority', value:'c', checked:'checked'} C
+    %input{type:'radio', name:'priority', value:'d'} D
+    %input{type:'radio', name:'priority', value:'e'} E
+    %input{type:'submit', value:'add task!'}
+
+  - if @tasks
+    = haml :task_table

@@ -1,0 +1,30 @@
+%table
+  %tr
+    %th Done?
+    %th Task
+    %th Priority
+    %th
+    %th
+    %th
+  - @tasks.each do |task|
+    - if task.complete?
+      - status = 'DONE!'
+      - change_to = 'uncomplete'
+    - else
+      - status = 'nope'
+      - change_to = 'complete'
+    %tr
+      %form{ action:"/tasks/#{task.id}", method:"post" }
+        %input{ type:'hidden', name:'_method', value:'put' }
+        %td
+          %input{ type:'checkbox', name:'complete?', value:'true', checked: task.complete?}
+        %td
+          %input{ type:'text', name:'description', value: "#{task.description}" }
+        %td
+          %input{ type:'text', name:'priority', value: "#{task.priority}" }
+        %td
+          %input{ type:'submit', value:'update!' }
+      %td
+        %form{ action:"/tasks/#{task.id}", method:"post" }
+          %input{ type:'hidden', name:'_method', value:'delete' }
+          %input{ type:'submit', value:'delete!' }
