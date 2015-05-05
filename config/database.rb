@@ -35,8 +35,12 @@ ActiveRecord::Base.establish_connection(
   :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
   :host     => db.host,
   :port     => db.port,
-  :username => 'pete',
-  :password => 'password',
+  # pete@ubuntu_laptop
+  # :username => 'pete',
+  # :password => 'password',
+  # heroku
+  :username => db.user,
+  :password => db.password,
   :database => DB_NAME,
   :encoding => 'utf8'
 )
